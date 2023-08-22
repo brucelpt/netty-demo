@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "a85e1db2-9bb2-46fc-8909-7b4562ace244",
+		"name": "netty-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13911712",
+		"_collection_link": "https://gold-rocket-616213.postman.co/workspace/AxSAS~71e8ee03-13f0-4148-afc1-edcfacda42cb/collection/13911712-a85e1db2-9bb2-46fc-8909-7b4562ace244?action=share&source=collection_link&creator=13911712"
+	},
+	"item": [
+		{
+			"name": "test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// pm.test(\"status=0 test\", function () {\r",
+							"//     var jsonData = pm.response.json();\r",
+							"//     pm.expect(jsonData.status).to.eql(0);\r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US",
+						"type": "text"
+					},
+					{
+						"key": "App-Id",
+						"value": "sasmgt-tool",
+						"type": "text"
+					},
+					{
+						"key": "App-Version",
+						"value": "4.2.0",
+						"type": "text"
+					},
+					{
+						"key": "App-Name",
+						"value": "SASMGT+Tool",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJsb2dpbkFjY291bnQiOiJsaW5wdCIsImlwIjoiMTcyLjE3LjAuMSIsInRva2VuU291cmNlIjoiNSIsImlkIjoiMmM5MTgwODg4OWY4Zjk1ZTAxODlmZDE3ZGYyZTMzMzciLCJleHAiOjE2OTI4ODgzNDcsInR5cGUiOiIwIn0.FV",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"certCn\": \"wewe\",\r\n\t\"certId\": \"\",\r\n\t\"certName\": \"linptL4\",\r\n\t\"certPublicKey\": \"\",\r\n\t\"certRequestJson\": \"\",\r\n\t\"certSchemeId\": \"721bb8a1499d617342c419f9e7933373\",\r\n\t\"certVersion\": \"V2.0\",\r\n\t\"country\": \"AU\",\r\n\t\"hash\": \"\",\r\n\t\"hsmId\": \"c8e1f834d808def2dfd463a2e60dbeab\",\r\n\t\"isProfileNecessary\": \"\",\r\n\t\"isvId\": \"\",\r\n\t\"kappidId\": \"\",\r\n\t\"keyLength\": 2048,\r\n\t\"keyUsage\": \"32768,128,16,8\",\r\n\t\"locality\": \"ts\",\r\n\t\"memo\": \"\",\r\n\t\"organizationName\": \"ts\",\r\n\t\"parentCertId\": \"\",\r\n\t\"parentCertSchemeId\": \"d389aa728d15d598754dfc24192b10e9\",\r\n\t\"permissionDomain\": \"\",\r\n\t\"product\": \"\",\r\n\t\"profileId\": \"\",\r\n\t\"province\": \"ts\",\r\n\t\"signPermissionTemplateId\": \"\",\r\n\t\"staffId\": \"01129ff51e0041858bec2435cdee348e\",\r\n\t\"subjectDataType\": 1,\r\n\t\"synFlag\": 0,\r\n\t\"ukeyId\": \"\",\r\n\t\"validAfterTime\": \"2023-08-16 06:46:49\",\r\n\t\"validBeforeTime\": \"2043-08-16 06:46:49\",\r\n\t\"encAndHashAlgorithm\": [\"RSA\", \"SHA-256\"]\r\n}"
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8801/sasManage/certificate/add",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8801",
+					"path": [
+						"sasManage",
+						"certificate",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
