@@ -104,3 +104,5 @@ nettyserver->remote server
 ![avatar](/testData/screenshot/Screenshot%20of%20Netty%20server%20forwarding%20request%20to%20backend%20server%20Wireshark%20network%20capture.png)
 - Connection Error Diagram
 ![avatar](/jpg/netty-error.jpg)
+- netty error log   
+For the self-test netty server error log, see /testData/nettyServerlog/nettylog.log file for details
