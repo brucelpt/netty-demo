@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class HttpsServerProxy {
     private static final int LOCAL_PORT = 8801;
     // Replace with your server IP
-    private static final String REMOTE_HOST = "10.30.51.70";
+    private static final String REMOTE_HOST = "Replace with your server IP";
     private static final int REMOTE_PORT = 9808;
 
     private static final String[] ciphers = new String[]{"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"};

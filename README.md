@@ -3,7 +3,7 @@ This project is to reproduce the demo of netty's abnormal disconnection problem 
 
 # Project Function Description
 The function of this project is to listen to port 8801, and enable tls mutual authentication, the Https data requested by the client is completely transmitted to another server, and the server response is returned to the client.  
-It's like an http proxy for nginx  
+It's like an http proxy for nginx.
 ![avatar](/jpg/netty-demo.jpg)
 
 # Project Operating Environment
@@ -14,6 +14,8 @@ It's like an http proxy for nginx
 - postman 10.17.0
 - Windows 10 Professional 
 
+# Remote Server Description
+My remote server is an API server developed based on jdk1.8.0_202 and springboot 2.7.12
 # Certificate Tree
 You can use the [XCA](https://hohnstaedt.de/xca/) to open /src/resources/ssl/ca.xdb to view the certificate tree structure
 ![avatar](/jpg/certificate.png)
@@ -25,6 +27,7 @@ You can use the [XCA](https://hohnstaedt.de/xca/) to open /src/resources/ssl/ca.
 # Quick Start
 
 1. Modify the REMOTE_HOST parameter of the HttpsServerProxy class and replace it with your server IP
+   ![avatar](/jpg/Replace IP.png)
 2. Run the main method of the HttpsServerProxy class to start
 
 
@@ -86,10 +89,21 @@ Body
   "encAndHashAlgorithm": ["RSA", "SHA-256"]
 }
 ```
-
+response json
+```json
+{
+    "status": 0,
+    "code": null,
+    "message": "SUCCESS",
+    "data": null,
+    "reserve": null
+}
+```
 3. Use postman for Https mutual authentication on port 8801, reuse the ssl link without disconnecting, and wireshark for packet capture
 4. After my test, the netty server will break the link actively when the test reaches 50-120 times. I don't know why. The most serious time is that after forwarding the client data to the later server, the background server will directly break the link before the response data is returned, resulting in a client error
 5. The key to the test is to always use keepalive to reuse the connection of the request, do not disconnect in the middle
+6. If I directly connect to the remote server through postman, or replace netty with nginx, this problem will not occur
+
 
 # Test Network Capture Data
 
@@ -100,9 +114,13 @@ Body
 - wireshark screenshot
 postman-> nettyserver
 ![avatar](/testData/screenshot/Postman%20client%20requests%20Netty%20server%20Wireshark%20network%20capture%20screenshot.png)
-nettyserver->remote server
+  As you can see from the screenshot, port 8801 of the netty server returns Encrypted Alert, causing the client to disconnect
+- nettyserver->remote server
 ![avatar](/testData/screenshot/Screenshot%20of%20Netty%20server%20forwarding%20request%20to%20backend%20server%20Wireshark%20network%20capture.png)
+  As can be seen from the screenshot, before the remote server receives the request but returns a response, the client port 56391 of the netty server sends a tcp fin disconnection request to the remote server port 9808, resulting in an error
 - Connection Error Diagram
 ![avatar](/jpg/netty-error.jpg)
+
+
 - netty error log   
 For the self-test netty server error log, see /testData/nettyServerlog/nettylog.log file for details
