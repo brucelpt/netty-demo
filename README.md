@@ -113,9 +113,13 @@ response json
 - wireshark screenshot
 postman-> nettyserver
 ![avatar](/testData/screenshot/Postman%20client%20requests%20Netty%20server%20Wireshark%20network%20capture%20screenshot.png)
-nettyserver->remote server
+  As you can see from the screenshot, port 8801 of the netty server returns Encrypted Alert, causing the client to disconnect
+- nettyserver->remote server
 ![avatar](/testData/screenshot/Screenshot%20of%20Netty%20server%20forwarding%20request%20to%20backend%20server%20Wireshark%20network%20capture.png)
+  As can be seen from the screenshot, before the remote server receives the request but returns a response, the client port 56391 of the netty server sends a tcp fin disconnection request to the remote server port 9808, resulting in an error
 - Connection Error Diagram
 ![avatar](/jpg/netty-error.jpg)
+
+
 - netty error log   
 For the self-test netty server error log, see /testData/nettyServerlog/nettylog.log file for details
