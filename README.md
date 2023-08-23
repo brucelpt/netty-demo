@@ -27,6 +27,7 @@ You can use the [XCA](https://hohnstaedt.de/xca/) to open /src/resources/ssl/ca.
 # Quick Start
 
 1. Modify the REMOTE_HOST parameter of the HttpsServerProxy class and replace it with your server IP
+   ![avatar](/jpg/Replace IP.png)
 2. Run the main method of the HttpsServerProxy class to start
 
 
